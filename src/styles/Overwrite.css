@@ -1,0 +1,28 @@
+.bg-dark {
+    background-color: black !important;
+}
+
+.nav-link {
+    font-family: 'Oswald', sans-serif;
+    font-size: 1.6em;
+    text-transform: uppercase;
+    font-weight: 400;
+}
+
+.navbar-brand {
+    font-family: 'Oswald', sans-serif;
+    font-weight: 900;
+    font-size: 1.6em;
+}
+
+.PB-signin-form-container .ant-input-affix-wrapper {
+    margin: 0 8px 8px 0;
+}
+
+.PB-blogpost-header-image .ant-carousel .slick-slide {
+    text-align: center;
+    height: 160px;
+    /* line-height: 160px; */
+    background: #364d79;
+    overflow: hidden;
+  }

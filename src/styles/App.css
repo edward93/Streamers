@@ -26,3 +26,31 @@
   from { transform: rotate(0deg); }
   to { transform: rotate(360deg); }
 }
+
+.S-page-header h2 {
+  padding-top: 1em;
+  text-transform: uppercase;
+  font-weight: 900;
+  /* color: #61DAFB; */
+}
+
+.S-header {}
+
+.S-footer-container {
+  background: #222;
+  width: 100%;
+  min-height: 100px;
+}
+
+.S-body {
+  min-height: calc(100vh - 158.8px);
+  padding-bottom: 30px;
+}
+
+.S-container {
+  min-height: 100%;
+}
+
+.S-form-actions {
+  margin-top: 8px;
+}
