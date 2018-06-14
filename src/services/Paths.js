@@ -3,7 +3,8 @@ const paths = {
     topModels: '/top-models',
     newModels: '/new-models',
     about: '/about',
-    categories: '/categories'
+    categories: '/categories',
+    room: '/room'
 }
 
 export default paths;
