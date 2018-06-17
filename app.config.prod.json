@@ -1,3 +1,4 @@
 {
-    "ServerUrl": "https://104.199.90.117:4443"    
+    "ServerUrl": "https://104.199.90.117:4443",
+    "Secret": "MY_SECRET"
 }
