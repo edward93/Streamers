@@ -22,12 +22,12 @@ class RoomGrid extends React.Component {
                             </Link>
                         </dir>
                         <dir className="col-sm">
-                            <Link to={Paths.room + `?name=anna`}>
+                            <Link to={Paths.room + `?name=jessica`}>
                                 <img src={streamImg} alt="" className="img-fluid" />
                             </Link>
                         </dir>
                         <dir className="col-sm">
-                            <Link to={Paths.room + `?name=anna`}>
+                            <Link to={Paths.room + `?name=stacy`}>
                                 <img src={streamImg} alt="" className="img-fluid" />
                             </Link>
                         </dir>

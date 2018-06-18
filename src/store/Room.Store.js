@@ -14,7 +14,7 @@ class RoomStore {
     @observable publisher = undefined;
     @observable mainStreamManager = undefined;
     @computed get sessionId() {
-        return `${this.modelName}10`;
+        return `${this.modelName}11`;
     }
 
     @action reset = () => {

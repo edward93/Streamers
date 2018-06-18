@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch } from 'react-router-dom';
+import { Router, Route, Switch, Redirect } from 'react-router-dom';
 import { Provider } from "mobx-react";
 
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -12,6 +12,9 @@ import ScrollToTop from './scrollToTop';
 import Header from './Header.Component';
 import Footer from './Footer.Component';
 import Room from './RoomComponents/Room.Component';
+import Signin from './SigninComponents/Signin.Cmb.Component';
+import { getAccessToken } from '../services/Utilities';
+
 import Paths from '../services/Paths';
 import RoomGrid from './RoomComponents/Room.Grid.Component';
 import RoomStore from '../store/Room.Store';
@@ -21,7 +24,35 @@ import '../styles/App.css';
 
 const history = createBrowserHistory();
 
+const PrivateRoute = ({ component: Component, ...rest }) => (
+  <Route {...rest} render={props => (
+      isAuthenticated() ? (
+          <Component {...props} />
+      ) : (
+              <Redirect to={{
+                  pathname: Paths.signin,
+                  state: { from: props.location }
+              }} />
+          )
+  )} />
+);
+
+function isAuthenticated() {
+  const token = getAccessToken();
+  let isLoggedIn = false;
+  if (!token) {
+      isLoggedIn = false;
+  } else {
+      isLoggedIn = true;
+  }
+  return isLoggedIn;
+}
+
 class App extends Component {
+  componentWillMount() {
+    UserSession.recoverFromStorage();
+  }
+
   render() {
     return (
       <Provider roomStore={RoomStore} session={UserSession}>
@@ -32,12 +63,13 @@ class App extends Component {
               <Header />
               <div className="S-body">
                 <Switch>
-                  <Route exact path={Paths.home} component={RoomGrid} />
-                  <Route exact path={Paths.topModels} component={main} />
-                  <Route exact path={Paths.newModels} component={main} />
-                  <Route exact path={Paths.about} component={main} />
-                  <Route exact path={Paths.categories} component={main} />
-                  <Route path={Paths.room} component={Room} />
+                  <PrivateRoute exact path={Paths.home} component={RoomGrid} />
+                  <PrivateRoute exact path={Paths.topModels} component={main} />
+                  <PrivateRoute exact path={Paths.newModels} component={main} />
+                  <PrivateRoute exact path={Paths.about} component={main} />
+                  <PrivateRoute exact path={Paths.categories} component={main} />
+                  <Route exact path={Paths.signin} component={Signin} />
+                  <PrivateRoute path={Paths.room} component={Room} />
                   <Route component={NoMatch} />
                 </Switch>
               </div>

@@ -4,7 +4,8 @@ const paths = {
     newModels: '/new-models',
     about: '/about',
     categories: '/categories',
-    room: '/room'
+    room: '/room',
+    signin: '/signin'
 }
 
 export default paths;

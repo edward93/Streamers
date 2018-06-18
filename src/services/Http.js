@@ -19,7 +19,7 @@ export const Post = (url, headers, body) => {
     return fetch(BaseUrl + "/" + url, {
         method: "POST",
         headers,
-        body,
+        body: JSON.stringify(body).toString(),
     }).then((response) => {
         // This is just a OPTIONS call to the server to make sure that the request is OK
         // Here can be done some manual checks.
@@ -29,11 +29,10 @@ export const Post = (url, headers, body) => {
     });
 }
 
-export const Get = (url, headers, body) => {
+export const Get = (url, headers) => {
     return fetch(BaseUrl + "/" + url, {
         method: "GET",
         headers,
-        body,
     }).then((response) => {
         // This is just a OPTIONS call to the server to make sure that the request is OK
         // Here can be done some manual checks.

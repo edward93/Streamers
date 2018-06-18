@@ -39,11 +39,8 @@ class Room extends React.Component {
                     <div className="row">
                         <div className="col-md-8">
                             <div className="S-vidoe-wrapper">
-                                {this.props.roomStore.isStreamPublished ?
-                                    <video className="S-video" ref={ref => this.props.roomStore.videoEl = ref} />
-                                    :
-                                    <img src={streamLarge} alt="" className="img-fluid" />
-                                }
+                                <video className="S-video img-fluid" poster={streamLarge} ref={ref => this.props.roomStore.videoEl = ref} />
+                                {/* {!this.props.roomStore.isStreamPublished && <img src={streamLarge} alt="" className="img-fluid" />} */}
                             </div>
                         </div>
                         <div className="col-md-4">
@@ -59,9 +56,12 @@ class Room extends React.Component {
                             </div>
                         </div>
                     </div>
+                    <hr />
                     <div className="row">
                         {this.props.session.role === 'streamer' &&
-                            <button className="btn btn-primary" onClick={this.startStream}>Start My Stream</button>
+                            <div className="col-sm">
+                                <button className="btn btn-primary" onClick={this.startStream}>Start My Stream</button>
+                            </div>
                         }
                     </div>
                 </div>
@@ -78,7 +78,7 @@ class Room extends React.Component {
                     if (result) {
                         this.props.roomStore.session.connect(this.props.roomStore.token, { clientData: this.props.session.userName })
                             .then(() => {
-                                let publisher = this.ov.initPublisher(undefined, {
+                                let publisher = this.props.roomStore.ov.initPublisher(undefined, {
                                     audioSource: undefined, // The source of audio. If undefined default microphone
                                     videoSource: undefined, // The source of video. If undefined default webcam
                                     publishAudio: true,     // Whether you want to start publishing with your audio unmuted or not
