@@ -13,9 +13,7 @@ class RoomStore {
     @observable token = undefined;
     @observable publisher = undefined;
     @observable mainStreamManager = undefined;
-    @computed get sessionId() {
-        return `${this.modelName}11`;
-    }
+    @observable sessionId = undefined;
 
     @action reset = () => {
         this.modelName = undefined;
@@ -36,33 +34,60 @@ class RoomStore {
         }
     }
 
-    @action createSession = () => {
+    @action createSession = (session) => {
         const str = `OPENVIDUAPP:${Config.Secret}`;
         const headers = {
             Authorization: `Basic ${btoa(str)}`,
             'Content-Type': 'application/json'
         }
 
-        return Post('/api/sessions', headers, {'customSessionId': this.sessionId}).then(response => {
-            if (response) return response;
+        return Post('/api/sessions', headers, {customSessionId: session}).then(response => {
+            if (response) {
+                this.setSessionId(response.id);
+                return response;
+            }
             else return false;
         });
     }
 
-    @action getToken = () => {
+    @action setSessionId = (sessionId) => {
+        localStorage.setItem("sessionId", sessionId);
+        this.sessionId = sessionId;
+    }
+
+    @action setToken = (token) => {
+        // localStorage.setItem("token", token);
+        this.token = token;
+    }
+
+    @action getToken = (role) => {
         const str = `OPENVIDUAPP:${Config.Secret}`;
         const headers = {
             Authorization: `Basic ${btoa(str)}`,
             'Content-Type': 'application/json'
         }
 
-        return Post('/api/tokens', headers, {'session': this.sessionId}).then(response => {
+        return Post('/api/tokens', headers, { 'session': this.sessionId, role }).then(response => {
             if (response) {
-                this.token = response.id;
+                this.setToken(response.id);
                 return true;
-            } 
+            }
             return false;
         });
+    }
+
+    @action recoverFromStorage = () => {
+        if (localStorage.getItem("sessionId")) {
+            this.sessionId = localStorage.getItem("sessionId");
+        }
+        // if (localStorage.getItem("token")) {
+        //     this.token = localStorage.getItem("token");
+        // }
+    }
+
+    @action removeSessionId = () => {
+        this.sessionId = undefined;
+        localStorage.removeItem("sessionId");
     }
 }
 

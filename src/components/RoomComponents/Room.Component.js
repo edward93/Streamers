@@ -11,6 +11,8 @@ import streamLarge from '../../images/stream-large.png';
 @observer
 class Room extends React.Component {
     componentDidMount() {
+        window.addEventListener("beforeunload", this.onUnload);
+
         this.props.roomStore.modelName = QueryString.parse(this.props.location.search).name;
         this.props.roomStore.ov = new OpenVidu();
         this.props.roomStore.session = this.props.roomStore.ov.initSession();
@@ -20,6 +22,13 @@ class Room extends React.Component {
             // so OpenVidu doesn't create an HTML video by its own
             let subscriber = this.props.roomStore.session.subscribe(event.stream, undefined);
             this.props.roomStore.subscribers.push(subscriber);
+            // if (this.props.session.role === 'viewer') {
+            //     let subscriber = this.props.roomStore.session.subscribe(event.stream, undefined);
+            //     this.props.roomStore.subscribers.push(subscriber);
+            //     console.log('E, streamCreated fired: ', event);
+            //     console.log('E, streamCreated fired subscriber: ', subscriber);
+            // }
+
         });
 
         this.props.roomStore.session.on('streamDestroyed', (event) => {
@@ -56,55 +65,131 @@ class Room extends React.Component {
                             </div>
                         </div>
                     </div>
+                    {/* <hr />
+                    <div className="row">
+                        {this.props.roomStore.subscribers.map(sub => {
+                            return (
+                                <div key={sub.stream.connection.connectionId} className="col-sm-2">
+                                    <video className="S-video img-fluid" poster={streamLarge} ref={ref => sub.el = ref} />
+                                </div>
+                            );
+                        })}
+                    </div> */}
                     <hr />
                     <div className="row">
-                        {this.props.session.role === 'streamer' &&
-                            <div className="col-sm">
-                                <button className="btn btn-primary" onClick={this.startStream}>Start My Stream</button>
-                            </div>
-                        }
+                        {this.actionBtns()}
                     </div>
                 </div>
             </dir>
         );
     }
 
-    startStream = (e) => {
+    actionBtns = () => {
+        if (this.props.session.role === 'streamer') {
+            return (
+                <div className="row">
+                    <div className="col-sm">
+                        <button className="btn btn-primary" onClick={this.startStream}>Start My Stream</button>
+                    </div>
+                    <div className="col-sm">
+                        <button className="btn btn-danger" onClick={this.kickAll}>Kick All</button>
+                    </div>
+                </div>
+            );
+        } else if (this.props.session.role === 'viewer') {
+            return (
+                <div className="col-sm">
+                    <button className="btn btn-primary" onClick={this.joinSession}>Join Session</button>
+                </div>
+            )
+        }
+    }
+
+    kickAll = (e) => {
         e.preventDefault();
 
-        this.props.roomStore.createSession().then(result => {
+        this.props.roomStore.subscribers.map(sub => this.props.roomStore.session.unsubscribe(sub));
+    }
+
+    joinSession = (e) => {
+        e.preventDefault();
+
+        this.props.roomStore.sessionId = QueryString.parse(this.props.location.search).sessionId;
+
+        // connect to session
+        this.props.roomStore.getToken().then(result => {
             if (result) {
-                this.props.roomStore.getToken().then(result => {
-                    if (result) {
-                        this.props.roomStore.session.connect(this.props.roomStore.token, { clientData: this.props.session.userName })
-                            .then(() => {
-                                let publisher = this.props.roomStore.ov.initPublisher(undefined, {
-                                    audioSource: undefined, // The source of audio. If undefined default microphone
-                                    videoSource: undefined, // The source of video. If undefined default webcam
-                                    publishAudio: true,     // Whether you want to start publishing with your audio unmuted or not
-                                    publishVideo: true,     // Whether you want to start publishing with your video enabled or not
-                                    resolution: '640x480',  // The resolution of your video
-                                    frameRate: 30,          // The frame rate of your video
-                                    insertMode: 'APPEND',   // How the video is inserted in the target element 'video-container'
-                                    mirror: false           // Whether to mirror your local video or not
-                                });
-
-                                this.props.roomStore.session.publish(publisher);
-
-                                this.props.roomStore.mainStreamManager = publisher;
-
-                                this.props.roomStore.mainStreamManager.addVideoElement(this.props.roomStore.videoEl);
-                                this.props.roomStore.publisher = publisher;
-                            });
-                    }
-                });
+                this.props.roomStore.session.connect(this.props.roomStore.token, { clientData: this.props.session.userName })
+                    .then(() => {
+                        console.log('EDWARD Subscribers are: ', this.props.roomStore.subscribers.slice());
+                        const streamer = this.props.roomStore.subscribers[this.props.roomStore.subscribers.length - 1];
+                        streamer.addVideoElement(this.props.roomStore.videoEl);
+                    })
             }
         });
     }
 
-    componentWillUnmount() {
-        if (this.props.roomStore.session) this.props.roomStore.session.disconnect();
+    connectToSession = () => {
+        this.props.roomStore.session.connect(this.props.roomStore.token, { clientData: this.props.session.userName })
+            .then(() => {
+                let publisher = this.props.roomStore.ov.initPublisher(undefined, {
+                    audioSource: undefined, // The source of audio. If undefined default microphone
+                    videoSource: undefined, // The source of video. If undefined default webcam
+                    publishAudio: true,     // Whether you want to start publishing with your audio unmuted or not
+                    publishVideo: true,     // Whether you want to start publishing with your video enabled or not
+                    resolution: '1280x720',  // The resolution of your video
+                    frameRate: 30,          // The frame rate of your video
+                    insertMode: 'APPEND',   // How the video is inserted in the target element 'video-container'
+                    mirror: true           // Whether to mirror your local video or not
+                });
+
+                this.props.roomStore.session.publish(publisher);
+
+                this.props.roomStore.mainStreamManager = publisher;
+
+                this.props.roomStore.mainStreamManager.addVideoElement(this.props.roomStore.videoEl);
+                this.props.roomStore.publisher = publisher;
+            });
+    }
+
+    startStream = (e) => {
+        e.preventDefault();
+
+        if (this.props.roomStore.sessionId) {
+            this.props.roomStore.getToken().then(result => {
+                if (result) {
+                    this.connectToSession();
+                }
+            });
+        } else {
+            this.props.roomStore.createSession(this.props.session.userName).then(res => {
+                if (res) {
+                    this.props.roomStore.getToken().then(result => {
+                        if (result) {
+                            this.connectToSession();
+                        }
+                    })
+                }
+            })
+        }
+    }
+
+    onUnload = (event) => {
+        event.preventDefault();
+        if (this.props.roomStore.session) {
+            this.props.roomStore.session.disconnect();
+            this.props.roomStore.removeSessionId();
+        };
         this.props.roomStore.reset();
+    }
+
+    componentWillUnmount() {
+        if (this.props.roomStore.session) {
+            this.props.roomStore.session.disconnect();
+            this.props.roomStore.removeSessionId();
+        };
+        this.props.roomStore.reset();
+        window.removeEventListener("beforeunload", this.onUnload);
     }
 }
 

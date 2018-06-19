@@ -29,8 +29,8 @@ class SigninViewer extends React.Component {
         )
     }
 
-    usernameChange = (value) => {
-        this.username = value;
+    usernameChange = (event) => {
+        this.username = event.target.value;
     }
 
     login = () => {

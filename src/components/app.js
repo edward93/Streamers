@@ -51,6 +51,7 @@ function isAuthenticated() {
 class App extends Component {
   componentWillMount() {
     UserSession.recoverFromStorage();
+    RoomStore.recoverFromStorage();
   }
 
   render() {

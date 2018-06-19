@@ -21,6 +21,9 @@ export const Post = (url, headers, body) => {
         headers,
         body: JSON.stringify(body).toString(),
     }).then((response) => {
+        if (!response.ok) {
+            return false;
+        }
         // This is just a OPTIONS call to the server to make sure that the request is OK
         // Here can be done some manual checks.
         return response.json();

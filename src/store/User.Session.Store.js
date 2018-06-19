@@ -26,13 +26,16 @@ class UserSession {
         this.email = undefined;
         this.role = undefined;
         localStorage.removeItem("AuthData");
+        localStorage.removeItem("sessionId");
     }
 
     @action recoverFromStorage = () => {
         const data = getAuthData();
-        this.isloggedIn = true;
-        this.role = data.role;
-        this.email = data.name;
+        if (data) {
+            this.isloggedIn = true;
+            this.role = data.role;
+            this.email = data.name;
+        }
     }
 }
 
