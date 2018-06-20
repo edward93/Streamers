@@ -117,7 +117,7 @@ class Room extends React.Component {
         this.props.roomStore.sessionId = QueryString.parse(this.props.location.search).sessionId;
 
         // connect to session
-        this.props.roomStore.getToken().then(result => {
+        this.props.roomStore.getToken('SUBSCRIBER').then(result => {
             if (result) {
                 this.props.roomStore.session.connect(this.props.roomStore.token, { clientData: this.props.session.userName })
                     .then(() => {
@@ -156,15 +156,15 @@ class Room extends React.Component {
         e.preventDefault();
 
         if (this.props.roomStore.sessionId) {
-            this.props.roomStore.getToken().then(result => {
+            this.props.roomStore.getToken('PUBLISHER').then(result => {
                 if (result) {
                     this.connectToSession();
                 }
             });
         } else {
-            this.props.roomStore.createSession(this.props.session.userName).then(res => {
+            this.props.roomStore.createSession(`${this.props.session.email}1`).then(res => {
                 if (res) {
-                    this.props.roomStore.getToken().then(result => {
+                    this.props.roomStore.getToken('PUBLISHER').then(result => {
                         if (result) {
                             this.connectToSession();
                         }

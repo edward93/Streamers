@@ -42,7 +42,9 @@ class RoomStore {
         }
 
         return Post('/api/sessions', headers, {customSessionId: session}).then(response => {
-            if (response) {
+            if (response === true) {
+                this.setSessionId(session);
+            } else if (response) {
                 this.setSessionId(response.id);
                 return response;
             }
@@ -80,9 +82,6 @@ class RoomStore {
         if (localStorage.getItem("sessionId")) {
             this.sessionId = localStorage.getItem("sessionId");
         }
-        // if (localStorage.getItem("token")) {
-        //     this.token = localStorage.getItem("token");
-        // }
     }
 
     @action removeSessionId = () => {

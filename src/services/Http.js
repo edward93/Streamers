@@ -22,6 +22,9 @@ export const Post = (url, headers, body) => {
         body: JSON.stringify(body).toString(),
     }).then((response) => {
         if (!response.ok) {
+            if (response.status === '409') {
+                return true;
+            }
             return false;
         }
         // This is just a OPTIONS call to the server to make sure that the request is OK
