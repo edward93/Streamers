@@ -22,7 +22,7 @@ export const Post = (url, headers, body) => {
         body: JSON.stringify(body).toString(),
     }).then((response) => {
         if (!response.ok) {
-            if (response.status === '409') {
+            if (response.status === 409) {
                 return true;
             }
             return false;

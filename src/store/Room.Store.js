@@ -44,6 +44,7 @@ class RoomStore {
         return Post('/api/sessions', headers, {customSessionId: session}).then(response => {
             if (response === true) {
                 this.setSessionId(session);
+                return true;
             } else if (response) {
                 this.setSessionId(response.id);
                 return response;
