@@ -13,6 +13,7 @@ import Header from './Header.Component';
 import Footer from './Footer.Component';
 import Room from './RoomComponents/Room.Component';
 import Signin from './SigninComponents/Signin.Cmb.Component';
+import Profile from './ProfileComponent/Publisher.Profile.Component';
 import { getAccessToken } from '../services/Utilities';
 
 import Paths from '../services/Paths';
@@ -69,6 +70,7 @@ class App extends Component {
                   <PrivateRoute exact path={Paths.newModels} component={main} />
                   <PrivateRoute exact path={Paths.about} component={main} />
                   <PrivateRoute exact path={Paths.categories} component={main} />
+                  <PrivateRoute exact path={Paths.profile} component={Profile} />
                   <Route exact path={Paths.signin} component={Signin} />
                   <PrivateRoute path={Paths.room} component={Room} />
                   <Route component={NoMatch} />

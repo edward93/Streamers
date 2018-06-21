@@ -5,7 +5,8 @@ const paths = {
     about: '/about',
     categories: '/categories',
     room: '/room',
-    signin: '/signin'
+    signin: '/signin',
+    profile: '/profile'
 }
 
 export default paths;
