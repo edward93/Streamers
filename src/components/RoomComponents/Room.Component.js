@@ -5,60 +5,68 @@ import QueryString from "query-string";
 import { OpenVidu } from "openvidu-browser";
 
 import Video from "./Video.Component";
+import PublisherRoom from './Room.Publisher.Component';
+import SubscriberRoom from './Room.Subscriber.Comonent';
 
 @inject("roomStore", "session")
 @observer
 class Room extends React.Component {
-  componentDidMount() {
-    window.addEventListener("beforeunload", this.onUnload);
-    this.props.roomStore.modelName = QueryString.parse(
-      this.props.location.search
-    ).name;
-  }
+
+  // componentDidMount() {
+  //   window.addEventListener("beforeunload", this.onUnload);
+  //   this.props.roomStore.modelName = QueryString.parse(
+  //     this.props.location.search
+  //   ).name;
+  // }
 
   render() {
-    return (
-      <div className="S-room-container conteiner=fluid">
-        <div className="S-room-title S-page-title text-center">
-          <h1>Welcome to {this.props.roomStore.modelName}'s Room</h1>
-        </div>
-        <hr />
-        <div className="S-room-video-container container-fluid">
-          <div className="row">
-            <div className="col-md-8">
-              <div className="S-vidoe-wrapper">
-                <Video streamManager={this.props.roomStore.publisher} />
-              </div>
-            </div>
-            <div className="col-md-4">
-              <div className="S-room-chat-box-container">
-                <div className="S-room-chat-box">
-                  <div className="S-chat-messages">Messages here</div>
-                  <div className="S-chat-input">Input</div>
-                </div>
-              </div>
-            </div>
-          </div>
-          {this.props.session.role === "viewer" && (
-            <div className="row">
-              <hr />
-              {this.props.roomStore.subscribers.map(sub => {
-                return (
-                  <div
-                    className="col-sm"
-                    key={sub.stream.connection.connectionId}
-                  >
-                    <Video streamManager={sub} />
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          <hr />
-          {this.actionBtns()}
-        </div>
-      </div>
-    );
+    if (this.props.session.role === 'streamer') {
+      return <PublisherRoom />
+    } else {
+      return <SubscriberRoom />
+    }
+    // return (
+    //   <div className="S-room-container conteiner=fluid">
+    //     <div className="S-room-title S-page-title text-center">
+    //       <h1>Welcome to {this.props.roomStore.modelName}'s Room</h1>
+    //     </div>
+    //     <hr />
+    //     <div className="S-room-video-container container-fluid">
+    //       <div className="row">
+    //         <div className="col-md-8">
+    //           <div className="S-vidoe-wrapper">
+    //             <Video streamManager={this.props.roomStore.publisher} />
+    //           </div>
+    //         </div>
+    //         <div className="col-md-4">
+    //           <div className="S-room-chat-box-container">
+    //             <div className="S-room-chat-box">
+    //               <div className="S-chat-messages">Messages here</div>
+    //               <div className="S-chat-input">Input</div>
+    //             </div>
+    //           </div>
+    //         </div>
+    //       </div>
+    //       {this.props.session.role === "viewer" && (
+    //         <div className="row">
+    //           <hr />
+    //           {this.props.roomStore.subscribers.map(sub => {
+    //             return (
+    //               <div
+    //                 className="col-sm"
+    //                 key={sub.stream.connection.connectionId}
+    //               >
+    //                 <Video streamManager={sub} />
+    //               </div>
+    //             );
+    //           })}
+    //         </div>
+    //       )}
+    //       <hr />
+    //       {this.actionBtns()}
+    //     </div>
+    //   </div>
+    // );
   }
 
   actionBtns = () => {

@@ -27,6 +27,10 @@ class RoomStore {
         this.mainStreamManager = undefined;
     }
 
+    getSubscriberUserName = (sub) => {
+        return JSON.parse(sub.stream.connection.data).name;
+    }
+
     @action deleteSubscriber = (streamManager) => {
         let index = this.subscribers.indexOf(streamManager, 0);
         if (index > -1) {

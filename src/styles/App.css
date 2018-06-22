@@ -23,8 +23,12 @@
 }
 
 @keyframes App-logo-spin {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
 }
 
 .S-page-header h2 {
@@ -58,4 +62,16 @@
 .S-page-title {
   margin-top: 20px;
   margin-bottom: 20px;
+}
+
+.S-room-chat-box-container {
+  height: 100%;
+}
+
+.S-room-chat-box {
+  height: 100%;
+}
+
+.S-chat-messages {
+  height: calc(100% - 32px);
 }

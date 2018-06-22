@@ -1,21 +1,20 @@
 import React from "react";
 import PropTypes from "prop-types";
+import { observer } from "mobx-react";
 
 import streamLarge from "../../images/stream-large.png";
 
+@observer
 class Video extends React.Component {
   static propTypes = {
-    streamManager: PropTypes.object.required
+    streamManager: PropTypes.object
   };
   videoEl = undefined;
 
-  componentDidMount() {
+  render() {
     if (this.props.streamManager) {
       this.props.streamManager.addVideoElement(this.videoEl);
     }
-  }
-
-  render() {
     return (
       <div>
         <video
