@@ -17,7 +17,6 @@ class Room extends React.Component {
       // this is only for demo. Not a real chat no one except for message creator can see this.
     };
   }
-  inputRef = undefined;
 
   componentDidMount() {
     window.addEventListener("beforeunload", this.onUnload);
