@@ -1,7 +1,6 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import { OpenVidu } from "openvidu-browser";
-// import QueryString from "query-string";
 import Input from "antd/lib/input";
 
 import Video from "./Video.Component";
