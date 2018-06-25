@@ -14,6 +14,7 @@ class RoomStore {
     @observable publisher = undefined;
     @observable mainStreamManager = undefined;
     @observable sessionId = undefined;
+    @observable isConnected = false;
 
     @action reset = () => {
         this.modelName = undefined;
@@ -25,6 +26,7 @@ class RoomStore {
         this.token = undefined;
         this.publisher = undefined;
         this.mainStreamManager = undefined;
+        this.isConnected = false;
     }
 
     getSubscriberUserName = (sub) => {
@@ -34,7 +36,9 @@ class RoomStore {
     @action deleteSubscriber = (streamManager) => {
         let index = this.subscribers.indexOf(streamManager, 0);
         if (index > -1) {
-            this.subscribers.splice(index, 1);
+            const subs = [...this.subscribers];
+            subs.splice(index, 1);
+            this.subscribers = subs;
         }
     }
 

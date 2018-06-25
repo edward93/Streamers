@@ -5,6 +5,7 @@ import { inject, observer } from "mobx-react";
 import { OpenVidu } from "openvidu-browser";
 import { withRouter } from "react-router-dom";
 
+import Config from "Config";
 import Video from "./Video.Component";
 import Message from "../ChatComponent/Chat.Message.Component";
 
@@ -56,7 +57,10 @@ class Room extends React.Component {
       // Subscribe to the Stream to receive it. Second parameter is undefined
       // so OpenVidu doesn't create an HTML video by its own
       let subscriber = store.session.subscribe(event.stream, undefined);
-      store.subscribers.push(subscriber);
+      const subs = [...store.subscribers];
+      subs.push(subscriber);
+      store.subscribers = subs;
+      this.findPublisher();
     });
 
     store.session.on("streamDestroyed", event => {
@@ -66,21 +70,47 @@ class Room extends React.Component {
     store.sessionId = QueryString.parse(this.props.location.search).sessionId;
 
     store.getToken("SUBSCRIBER").then(result => {
-      if (result) {
+      if (result === false) {
+        console.warn(
+          "No connection to OpenVidu Server. This may be a certificate error at " +
+            Config.ServerUrl
+        );
+        if (
+          window.confirm(`No connection to OpenVidu Server. This may be a certificate error at '${
+            Config.ServerUrl
+          }'\n\n
+                Click OK to navigate and accept it. If no certificate warning is shown, 
+                then check that your OpenVidu Server is up and running at ${
+                  Config.ServerUrl
+                }`)
+        ) {
+          this.props.location.push(Config.ServerUrl + "/accept-certificate");
+        }
+      } else if (result) {
         store.session
           .connect(
             store.token,
-            { name: this.props.session.userName, role: "SUBSCRIBER" }
+            { name: this.props.session.userName || "Guest", role: "SUBSCRIBER" }
           )
           .then(() => {
-            console.log("Whole data: ", store.subscribers.slice());
-            store.publisher = store.subscribers.filter(
-              c => JSON.parse(c.stream.connection.data).role === "PUBLISHER"
-            )[0];
-            console.log("Publisher is: ", store.publisher);
+            store.isConnected = true;
+            this.findPublisher();
           });
       }
     });
+  };
+
+  findPublisher = () => {
+    const store = this.props.roomStore;
+    if (store.isConnected) {
+      store.publisher = store.subscribers.filter(
+        c => JSON.parse(c.stream.connection.data).role === "PUBLISHER"
+      )[0];
+
+      if (!store.publisher) {
+        // TODO: Show offline poster
+      }
+    }
   };
 
   render() {

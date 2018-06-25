@@ -35,7 +35,7 @@ class SigninViewer extends React.Component {
 
     login = () => {
         this.props.session.login('viewer', this.username);
-        this.props.history.go(Paths.home);
+        this.props.history.push(Paths.home);
     }
 }
 
