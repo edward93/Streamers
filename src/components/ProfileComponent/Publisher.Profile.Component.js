@@ -1,9 +1,13 @@
 import React from "react";
 import { withRouter } from 'react-router-dom';
 import Paths from '../../services/Paths';
+import { inject } from 'mobx-react';
 
-import girlImg from "../../images/girl.jpg";
+import annaImg from "../../images/girl.jpg";
+import stacyImg from '../../images/stacy.jpeg'; 
+import jesicaImg from '../../images/jessica.jpg'; 
 
+@inject('session')
 class Profile extends React.Component {
   render() {
     return (
@@ -16,7 +20,7 @@ class Profile extends React.Component {
         <div className="S-profile-body">
           <div className="row">
             <div className="col-sm-4 S-profile-pic">
-              <img src={girlImg} alt="" className="img-fluid" />
+              {this.img()}
             </div>
             <div className="col-sm-8">
               <div className="S-profile-bio">
@@ -34,6 +38,24 @@ class Profile extends React.Component {
         </div>
       </div>
     );
+  }
+
+  img = () => {
+    if(this.props.session.email === 'anna') {
+      return (
+        <img src={annaImg} alt="" className="img-fluid" />
+      )
+    }
+    if (this.props.session.email === 'stacy') {
+      return (
+        <img src={stacyImg} alt="" className="img-fluid" />
+      )
+    }
+    if (this.props.session.email === 'jessica') {
+      return (
+        <img src={jesicaImg} alt="" className="img-fluid" />
+      )
+    }
   }
 
   startStream = (e) => {

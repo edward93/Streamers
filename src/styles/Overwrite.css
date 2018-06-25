@@ -1,5 +1,5 @@
 .bg-dark {
-    background-color: black !important;
+    background-color: rgb(255, 0, 0) !important;
 }
 
 .nav-link {
@@ -7,6 +7,15 @@
     font-size: 1.6em;
     text-transform: uppercase;
     font-weight: 400;
+    color: #ffffff !important;
+}
+
+.nav-item.active a {
+    color: #000000 !important;
+}
+
+.nav-link:hover {
+    color: #505050 !important;
 }
 
 .navbar-brand {
@@ -15,14 +24,14 @@
     font-size: 1.6em;
 }
 
-.PB-signin-form-container .ant-input-affix-wrapper {
+.S-signin-form-container .ant-input-affix-wrapper {
     margin: 0 8px 8px 0;
 }
 
-.PB-blogpost-header-image .ant-carousel .slick-slide {
+.S-blogpost-header-image .ant-carousel .slick-slide {
     text-align: center;
     height: 160px;
     /* line-height: 160px; */
     background: #364d79;
     overflow: hidden;
-  }
+}

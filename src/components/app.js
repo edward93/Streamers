@@ -7,7 +7,7 @@ import DevTools from 'mobx-react-devtools';
 import '../styles/Overwrite.css';
 import 'antd/dist/antd.css';
 
-import main from './main';
+import empty from './empty';
 import ScrollToTop from './scrollToTop';
 import Header from './Header.Component';
 import Footer from './Footer.Component';
@@ -66,10 +66,10 @@ class App extends Component {
               <div className="S-body">
                 <Switch>
                   <PrivateRoute exact path={Paths.home} component={RoomGrid} />
-                  <PrivateRoute exact path={Paths.topModels} component={main} />
-                  <PrivateRoute exact path={Paths.newModels} component={main} />
-                  <PrivateRoute exact path={Paths.about} component={main} />
-                  <PrivateRoute exact path={Paths.categories} component={main} />
+                  <PrivateRoute exact path={Paths.topModels} component={empty} />
+                  <PrivateRoute exact path={Paths.newModels} component={empty} />
+                  <PrivateRoute exact path={Paths.about} component={empty} />
+                  <PrivateRoute exact path={Paths.categories} component={empty} />
                   <PrivateRoute exact path={Paths.profile} component={Profile} />
                   <Route exact path={Paths.signin} component={Signin} />
                   <PrivateRoute path={Paths.room} component={Room} />

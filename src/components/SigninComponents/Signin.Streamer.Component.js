@@ -36,7 +36,7 @@ class SignIn extends React.Component {
 
     login = () => {
         this.props.session.login('streamer', this.username);
-        this.props.history.go(Paths.home);
+        this.props.history.push(Paths.home);
     }
 
     selectChange = (value) => {

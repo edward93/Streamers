@@ -1,8 +1,10 @@
 import React from "react";
 import { inject, observer } from "mobx-react";
 import { OpenVidu } from "openvidu-browser";
+import { withRouter } from "react-router-dom";
 import Input from "antd/lib/input";
 
+import Config from "Config";
 import Video from "./Video.Component";
 import Message from "../ChatComponent/Chat.Message.Component";
 
@@ -113,17 +115,31 @@ class Room extends React.Component {
         }
       });
     } else {
-      store
-        .createSession(`${this.props.session.email}1`)
-        .then(res => {
-          if (res) {
-            store.getToken("PUBLISHER").then(result => {
-              if (result) {
-                this.connectToSession();
-              }
-            });
+      store.createSession(`${this.props.session.email}1`).then(res => {
+        if (res === false) {
+          console.warn(
+            "No connection to OpenVidu Server. This may be a certificate error at " +
+              Config.ServerUrl
+          );
+          if (
+            window.confirm(`No connection to OpenVidu Server. This may be a certificate error at '${
+              Config.ServerUrl
+            }'\n\n
+                  Click OK to navigate and accept it. If no certificate warning is shown, 
+                  then check that your OpenVidu Server is up and running at ${
+                    Config.ServerUrl
+                  }`)
+          ) {
+            this.props.location.push(Config.ServerUrl + "/accept-certificate");
           }
-        });
+        } else if (res) {
+          store.getToken("PUBLISHER").then(result => {
+            if (result) {
+              this.connectToSession();
+            }
+          });
+        }
+      });
     }
   };
 
@@ -146,7 +162,7 @@ class Room extends React.Component {
           insertMode: "APPEND", // How the video is inserted in the target element 'video-container'
           mirror: true // Whether to mirror your local video or not
         });
-
+        store.isConnected = false;
         store.publisher = publisher;
 
         store.session.publish(publisher);
@@ -167,4 +183,4 @@ class Room extends React.Component {
   };
 }
 
-export default Room;
+export default withRouter(Room);
