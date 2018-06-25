@@ -1,8 +1,13 @@
-import React from "react";
+import React from 'react';
 import { observer, inject } from "mobx-react";
-import streamImg from "../../images/stream.png";
-import Paths from "../../services/Paths";
-import { Link, withRouter } from "react-router-dom";
+import streamImg from '../../images/stream.png';
+
+import annaImg from '../../images/girl.jpg';
+import jessicaImg from '../../images/jessica.jpg';
+import stacyImg from '../../images/stacy.jpeg';
+
+import Paths from '../../services/Paths';
+import { Link, withRouter } from 'react-router-dom';
 
 @inject("roomStore", "session")
 @observer
@@ -23,16 +28,33 @@ class RoomGrid extends React.Component {
           <div className="row">
             <dir className="col-sm">
               <Link to={Paths.room + `?name=anna&sessionId=anna1`}>
+                <img src={annaImg} alt="" className="img-fluid" />
+              </Link>
+            </dir>
+            <dir className="col-sm">
+              <Link to={Paths.room + `?name=jessica&sessionId=jessica1`}>
+                <img src={jessicaImg} alt="" className="img-fluid" />
+              </Link>
+            </dir>
+            <dir className="col-sm">
+              <Link to={Paths.room + `?name=stacy&sessionId=stacy1`}>
+                <img src={stacyImg} alt="" className="img-fluid" />
+              </Link>
+            </dir>
+          </div>
+          {/* <div className="row">
+            <dir className="col-sm">
+              <Link to={Paths.room + `?name=anna`}>
                 <img src={streamImg} alt="" className="img-fluid" />
               </Link>
             </dir>
             <dir className="col-sm">
-              <Link to={Paths.room + `?name=jessica`}>
+              <Link to={Paths.room + `?name=anna`}>
                 <img src={streamImg} alt="" className="img-fluid" />
               </Link>
             </dir>
             <dir className="col-sm">
-              <Link to={Paths.room + `?name=stacy`}>
+              <Link to={Paths.room + `?name=anna`}>
                 <img src={streamImg} alt="" className="img-fluid" />
               </Link>
             </dir>
@@ -53,24 +75,7 @@ class RoomGrid extends React.Component {
                 <img src={streamImg} alt="" className="img-fluid" />
               </Link>
             </dir>
-          </div>
-          <div className="row">
-            <dir className="col-sm">
-              <Link to={Paths.room + `?name=anna`}>
-                <img src={streamImg} alt="" className="img-fluid" />
-              </Link>
-            </dir>
-            <dir className="col-sm">
-              <Link to={Paths.room + `?name=anna`}>
-                <img src={streamImg} alt="" className="img-fluid" />
-              </Link>
-            </dir>
-            <dir className="col-sm">
-              <Link to={Paths.room + `?name=anna`}>
-                <img src={streamImg} alt="" className="img-fluid" />
-              </Link>
-            </dir>
-          </div>
+          </div> */}
         </div>
       </dir>
     );
