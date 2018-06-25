@@ -3,6 +3,7 @@ import { inject, observer } from "mobx-react";
 import { OpenVidu } from "openvidu-browser";
 import Input from "antd/lib/input";
 
+import Config from 'Config';
 import Video from "./Video.Component";
 import Message from "../ChatComponent/Chat.Message.Component";
 
@@ -116,6 +117,14 @@ class Room extends React.Component {
       store
         .createSession(`${this.props.session.email}1`)
         .then(res => {
+          if (res === false) {
+            console.warn('No connection to OpenVidu Server. This may be a certificate error at ' + Config.ServerUrl);
+              if (window.confirm(`No connection to OpenVidu Server. This may be a certificate error at '${Config.ServerUrl}'\n\n
+                  Click OK to navigate and accept it. If no certificate warning is shown, 
+                  then check that your OpenVidu Server is up and running at ${Config.ServerUrl}`)) {
+                this.props.location.push(Config.ServerUrl + '/accept-certificate');
+              }
+          }
           if (res) {
             store.getToken("PUBLISHER").then(result => {
               if (result) {
