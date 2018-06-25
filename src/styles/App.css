@@ -41,7 +41,8 @@
 .S-header {}
 
 .S-footer-container {
-  background: #222;
+  /* background: rgb(24, 44, 255); */
+  background: rgb(255, 0, 0);
   width: 100%;
   min-height: 100px;
 }
@@ -74,4 +75,12 @@
 
 .S-chat-messages {
   height: calc(100% - 32px);
+}
+
+.vertical-center {
+  min-height: calc(100% - 70px);  /* Fallback for browsers do NOT support vh unit */
+  min-height: calc(100vh - 70px); /* These two lines are counted as one :-)       */
+
+  display: flex;
+  align-items: center;
 }
