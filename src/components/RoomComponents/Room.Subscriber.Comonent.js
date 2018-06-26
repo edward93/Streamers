@@ -1,6 +1,6 @@
 import React from "react";
 import Input from "antd/lib/input";
-import QueryString from "query-string";
+import qs from "qs";
 import { inject, observer } from "mobx-react";
 import { OpenVidu } from "openvidu-browser";
 import { withRouter } from "react-router-dom";
@@ -23,8 +23,8 @@ class Room extends React.Component {
 
   componentWillMount() {
     window.addEventListener("beforeunload", this.onUnload);
-    this.props.roomStore.modelName = QueryString.parse(
-      this.props.location.search
+    this.props.roomStore.modelName = qs.parse(
+      this.props.location.search, { delimiter: /[?,&]/ }
     ).name;
 
     this.connectToSession();
@@ -67,7 +67,7 @@ class Room extends React.Component {
       store.deleteSubscriber(event.stream.streamManager);
     });
 
-    store.sessionId = QueryString.parse(this.props.location.search).sessionId;
+    store.sessionId = qs.parse(this.props.location.search, { delimiter: /[?,&]/ }).sessionId;
 
     store.getToken("SUBSCRIBER").then(result => {
       if (result === false) {
