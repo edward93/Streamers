@@ -2,6 +2,10 @@
   text-align: center;
 }
 
+body{
+  font-family: 'Oswald', sans-serif !important;
+}
+
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 80px;
@@ -13,9 +17,74 @@
   padding: 20px;
   color: white;
 }
+.after_line{
+  position: relative;
+  padding-bottom: 15px;
+}
+
+.after_line::after{
+  content: '';
+  width: 170px;
+  height: 2px;
+  background-color: rgba(0, 0, 0, 0.39);
+  position: absolute;
+  bottom: 0px;
+  left: 50%;
+  -webkit-transform: translateX(-50%);
+  -moz-transform: translateX(-50%);
+  -ms-transform: translateX(-50%);
+  -o-transform: translateX(-50%);
+  transform: translateX(-50%);
+}
+
+.S-room-grid-container{
+  padding: 0;
+}
+
+.category_gradient{
+  position: relative;
+  background-image: url("../images/Wallpapers_Sexy_Girls_276_46_bender777post.jpg");
+  -webkit-background-size: cover;
+  background-size: cover;
+  background-attachment: fixed;
+  background-position: center bottom;
+}
+.black{
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  background-color: rgba(0, 0, 0, 0.63);
+}
 
 .App-title {
   font-size: 1.5em;
+}
+
+.relative{
+  position: relative !important;
+  z-index: 5;
+}
+
+.lent{
+  position: absolute;
+  font-size: 16px;
+  color: white;
+  left: -7px;
+  top: -13px;
+  padding: 3px 10px;
+  width: 103%;
+}
+.in_private{
+  background-color: #922727;
+}
+
+.online{
+  background-color: #4d8005;
+}
+
+.offline{
+  background-color: #58277a;
 }
 
 .App-intro {
@@ -38,18 +107,48 @@
   /* color: #61DAFB; */
 }
 
+/***************************************
+                header
+*************************************/
+
 .S-header {}
+
+.navbar-nav {
+  width: 80%;
+  justify-content: space-around;
+}
 
 .S-footer-container {
   /* background: rgb(24, 44, 255); */
-  background: rgb(255, 0, 0);
+  background: #18beff;
   width: 100%;
   min-height: 100px;
+  padding: 15px;
+  display: flex;
+  align-items: flex-end;
+}
+
+.S-footer-container > div{
+  width: 100%;
+}
+
+.S-footer-container p{
+  color: #ffffff;
+  margin-top: auto;
+  margin-bottom: 0;
+  text-align: center;
+  font-size: 17px;
+}
+
+.S-footer-container a{
+  font-weight: bold;
+  font-size: 18px;
+  color: #fff;
 }
 
 .S-body {
   min-height: calc(100vh - 158.8px);
-  padding-bottom: 30px;
+  /*padding-bottom: 30px;*/
 }
 
 .S-container {
@@ -84,3 +183,209 @@
   display: flex;
   align-items: center;
 }
+
+/*********************************
+            chat start button
+****************************************/
+.relative span.model_name{
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 16px;
+  line-height: 18px;
+  padding-top: 5px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+  background-image: linear-gradient(to right, #18beff, white);
+  width: 100%;
+  color: #fff;
+  letter-spacing: 1px;
+
+}
+.relative a.start_chat{
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  padding: 12px 30px;
+  -webkit-border-radius: 4px 0 0 0 ;
+  -moz-border-radius: 4px 0 0 0 ;
+  border-radius: 4px 0 0 0 ;
+  background-color: #0AE8AC;
+  color: #000;
+  opacity: 0;  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  -ms-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+.relative:hover a.start_chat{
+  opacity: 1;}
+
+.relative a.start_chat:hover{
+  -webkit-box-shadow: 0 0  6px #000;
+  -moz-box-shadow: 0 0  6px #000;
+  box-shadow: 0 0  6px #000;
+}
+
+.relative img.img-fluid{
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+}
+
+/*div.relative:hover img{
+  filter: saturate(5%);
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  -ms-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  transition: 0.3s all;
+}*/
+
+
+/**************************
+        not page found
+*************************/
+
+.not_found{
+  text-align: center;
+  margin: 200px auto 0;
+}
+
+.not_found p{
+  margin-top: 20px;
+  font-size: 30px;
+}
+
+.not_found p a{
+  color: #000000;
+}
+
+.not_found p a:hover{
+  text-decoration: underline;
+}
+
+.not_found p b{
+  font-size: 40px;
+}
+
+
+/**********************************
+         todo top
+*******************************/
+
+.top_destinaton{
+  padding-top: 15px;
+  /*margin-right: -15px;*/
+  /*margin-left: -15px;*/
+}
+.top_destinaton.bg{
+  background-image: linear-gradient(to bottom, #9fa093, #fff );
+
+}
+.destination_img {
+  position: relative;
+  display: flex;
+  width: 100%;
+  overflow: auto;
+  max-width: 1900px;
+  margin: 0 auto;
+  padding-bottom: 15px;
+  padding-top: 20px;
+}
+
+.destination_img img {
+  width: 275px !important;
+  height: 350px;
+  object-fit: cover;
+  display: block;
+  margin: 0 0px;
+  -webkit-transition: 0.5s all ease-out;
+  -moz-transition: 0.5s all ease-out;
+  -ms-transition: 0.5s all ease-out;
+  -o-transition: 0.5s all ease-out;
+  transition: 0.5s all ease-out;
+}
+
+.destination_img > div{
+  flex-shrink: 0;
+  margin: 0 10px;
+  border: 1px solid #55bfff;
+}
+
+.S-room-grid-wrapper .relative{
+  border: 1px solid #18beff;
+}
+
+/***********************************
+        videos room
+********************************/
+
+p.model_option{
+  display: flex;
+}
+p.model_option a{
+  width: 100%;
+  text-align: center;
+  display: block;
+  padding: 5px;
+  color: #fff;
+  -webkit-transition: 0.3s all;
+  -moz-transition: 0.3s all;
+  -ms-transition: 0.3s all;
+  -o-transition: 0.3s all;
+  transition: 0.3s all;
+}
+
+a.private{
+  background-color: #00bfff;
+}
+
+a.tip{
+  background-color: #ffb600;
+}
+.favorite{
+  background-color: #f32c00;
+}
+
+p.model_option a:hover{
+  -webkit-transform: scale(0.97);
+  -moz-transform: scale(0.97);
+  -ms-transform: scale(0.97);
+  -o-transform: scale(0.97);
+  transform: scale(0.97);
+}
+
+
+.model_info{
+  /*display: flex;*/
+  /*align-items: center;*/
+}
+
+.model_info img{
+  width: 100%;
+  height: 450px;
+  object-fit: cover;
+}
+.model_info p{
+  font-size: 16px;
+}
+
+.model_gallery{
+  max-height: 800px;
+  overflow: auto;
+  justify-content: flex-start;
+}
+
+.model_gallery img{
+  width: 270px;
+  margin: 10px;
+  height: 300px;
+  object-fit: cover;
+}
+
+
+
+
+

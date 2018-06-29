@@ -9,6 +9,14 @@ import Config from "Config";
 import Video from "./Video.Component";
 import Message from "../ChatComponent/Chat.Message.Component";
 
+import modelImg from '../../images/021.jpg';
+import girls from '../../images/girls.jpg';
+import girl from '../../images/girl.jpg';
+import annaImg from '../../images/girl.jpg';
+import jessicaImg from '../../images/jessica.jpg';
+import stacyImg from '../../images/stacy.jpeg';
+import Paths from "../../services/Paths";
+
 @inject("roomStore", "session")
 @observer
 class Room extends React.Component {
@@ -125,6 +133,10 @@ class Room extends React.Component {
             <div className="col-md-8">
               <div className="S-vidoe-wrapper">
                 <Video streamManager={this.props.roomStore.publisher} />
+                <p className="model_option"><a className="private" href="#">In private</a>
+                    <a className="tip" href="#">Send tip</a>
+                    <a className="favorite" href="#">Add favorite</a>
+                </p>
               </div>
             </div>
             <div className="col-md-4">
@@ -151,6 +163,195 @@ class Room extends React.Component {
             </div>
           </div>
           <hr />
+        </div>
+        <div className="S-room-model-container container-fluid">
+            <div className="model_info row content align-items-center">
+              <div className="col-sm-3 col-12">              <div className="model_img"><img src={modelImg} alt=""/></div>
+              </div>
+              <div className="col-sm-2 col-12"><div className="model_boiographi">
+                  <p>Name:Anna</p>
+                  <p>Age:65</p>
+                  <p>Sex: Female</p>
+                  <p>Location:London</p>
+                  <p>Weight:68 kg.</p>
+              </div></div>
+              <div className="col-sm-7 model_gallery text-center">
+                  <img src={girls} alt=""/>
+                  <img src={modelImg} alt=""/>
+                  <img src={girl} alt=""/>
+                  <img src={modelImg} alt=""/>
+                  <img src={girl} alt=""/>
+                  <img src={modelImg} alt=""/>
+              </div>
+            </div>
+            <div className=" top_destinaton mt-5">
+                <div className="S-room-gird-title S-page-title text-center">
+                    <h1>Top Models</h1>
+                </div>
+                <div className=" destination_img" id="destination_img">
+                    <div className="relative">
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={modelImg} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girl} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={modelImg} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girl} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={modelImg} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={modelImg} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={modelImg} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href="#" className="start_chat">Start chat</a>
+                    </div>
+                    </div>
+            </div>
+
+            <div className="top_destinaton bg mt-5">
+                <div className="S-room-gird-title S-page-title text-center">
+                    <h1 className="after_line" style={{color:'#fff'}}>Category</h1>
+                </div>
+                <div className=" destination_img" id="destination_img">
+                    <div className="relative">
+                        <div className="lent in_private">
+                            In private
+                        </div>
+                        <img src={jessicaImg} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <div className="lent online">
+                            Online
+                        </div>
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <div className="lent offline">
+                            Offline
+                        </div>
+                        <img src={girl} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <div className="lent online">
+                            Online
+                        </div>
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girl} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                    <div className="relative">
+                        <img src={girls} alt="" className="img-fluid" />
+                        <span className="model_name">Anna Anna <br/>
+                        Category
+                    </span>
+                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                    </div>
+                </div>
+            </div>
+
         </div>
       </div>
     );
