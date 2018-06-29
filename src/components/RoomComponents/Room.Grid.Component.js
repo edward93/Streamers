@@ -31,75 +31,138 @@ class RoomGrid extends React.Component {
               </div>
               <div className=" destination_img" id="destination_img">
                   <div className="relative">
+                      <div className="lent in_private">
+                          Brumette
+                      </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={annaImg} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
+                    </span>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
+                  </div>
 
-                      <img src={jessicaImg} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
+
+                  <div className="relative">
+                      <div className="lent in_private">
+                                  Asian
+                              </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={jessicaImg} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
                     </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
+                  </div>
+
+
+                  <div className="relative">
+                      <div className="lent in_private">
+                                  Brumette
+                              </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={girls} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
+                    </span>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
                   </div>
                   <div className="relative">
-                      <img src={girls} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
+                      <div className="lent in_private">
+                                  Asian
+                              </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={annaImg} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
                     </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
                   </div>
                   <div className="relative">
-                      <img src={girl} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
+                      <div className="lent in_private">
+                                  Brumette
+                              </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={girl} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
                     </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
                   </div>
                   <div className="relative">
-                      <img src={girls} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
+                      <div className="lent in_private">
+                                  Asian
+                              </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={girls} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
                     </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
                   </div>
                   <div className="relative">
-                      <img src={girl} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
+                      <div className="lent in_private">
+                                  Brumette
+                              </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={jessicaImg} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
                     </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
                   </div>
                   <div className="relative">
-                      <img src={girls} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
+                      <div className="lent in_private">
+                                  Asian
+                              </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={girls} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
                     </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
                   </div>
                   <div className="relative">
-                      <img src={girls} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
+                      <div className="lent in_private">
+                                  Brumette
+                              </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={girl} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
                     </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
                   </div>
                   <div className="relative">
-                      <img src={girls} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
+                      <div className="lent in_private">
+                                  Asian
+                              </div>
+                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                          <img src={annaImg} alt="" className="img-fluid" />
+                          <p className="count"><span className="available_count">Available<br/>
+                        3000 models
                     </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
-                  </div>
-                  <div className="relative">
-                      <img src={girls} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
-                    </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
-                  </div>
-                  <div className="relative">
-                      <img src={girls} alt="" className="img-fluid" />
-                      <span className="model_name">Anna Anna <br/>
-                        Category
-                    </span>
-                      <a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>
+                              <span className="now_available">Now online <br/>100 models</span></p>
+                          {/*<a href={Paths.room+'?name=jessica&sessionId=jessica1'} className="start_chat">Start chat</a>*/}
+                      </a>
                   </div>
               </div>
           </div>
@@ -203,11 +266,10 @@ class RoomGrid extends React.Component {
 
           <hr />
         <div className="category_gradient">
-
-            <div className="S-room-gird-title S-page-title text-center mt-5">
-            <h1 className="after_line">Models</h1>
-        </div>
             <div className="black"></div>
+            <div className="S-room-gird-title S-page-title text-center mt-5">
+            <h1 className="after_line white" style={{color:'#fff', paddingTop:'15px'}}>Models</h1>
+        </div>
 
             <div className="S-room-grid-wrapper container margin">
                 <div className="row">

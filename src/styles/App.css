@@ -37,8 +37,27 @@ body{
   transform: translateX(-50%);
 }
 
+.after_line.white::after{
+  background-color: #fff;
+}
+
 .S-room-grid-container{
   padding: 0;
+}
+
+.S-vidoe-wrapper > div{
+  text-align: center;
+}
+
+
+.count{
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  padding: 0 10px;
+  background-image: linear-gradient(to right, #56c0ff 50%, #0AE8AC 50%);
+  margin-bottom: 0;
+  color: #fff;
 }
 
 .category_gradient{
