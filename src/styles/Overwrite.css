@@ -1,5 +1,5 @@
 .bg-dark {
-    background-color: rgb(255, 0, 0) !important;
+    background-color: #18beff !important;
 }
 
 .nav-link {
@@ -11,7 +11,7 @@
 }
 
 .nav-item.active a {
-    color: #000000 !important;
+    color: #000 !important;
 }
 
 .nav-link:hover {

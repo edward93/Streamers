@@ -20,6 +20,7 @@ import Paths from '../services/Paths';
 import RoomGrid from './RoomComponents/Room.Grid.Component';
 import RoomStore from '../store/Room.Store';
 import UserSession from '../store/User.Session.Store';
+import not_found from '../images/404.jpg';
 
 import '../styles/App.css';
 
@@ -88,7 +89,13 @@ class App extends Component {
 const NoMatch = () => {
   return (
     <div>
-      <p>Page was not found</p>
+      <div className="not_found">
+          <img src={not_found} alt=""/>
+          <p>
+              <b>Come back, you're wandering too far!</b> <br/>
+              We couldn't find the page you're looking for. Try searching or go back to the <a href={Paths.home}>Home</a>
+          </p>
+      </div>
     </div>
   )
 }

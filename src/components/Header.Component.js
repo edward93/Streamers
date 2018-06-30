@@ -24,8 +24,8 @@ class Header extends React.Component {
                             <NavItem path={Paths.home} name="Home" />
                             <NavItem path={Paths.topModels} name="Top Models" />
                             <NavItem path={Paths.newModels} name="New Models" />
-                            <NavItem path={Paths.about} name="About us" />
                             <NavItem path={Paths.categories} name="Categories" />
+                            <NavItem path={Paths.about} name="About us" />
                         </ul>
 
                         {/* <ul className="navbar-nav pull-sm-right">
