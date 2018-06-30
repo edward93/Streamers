@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import { Provider } from "mobx-react";
 
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -93,7 +93,7 @@ const NoMatch = () => {
           <img src={not_found} alt=""/>
           <p>
               <b>Come back, you're wandering too far!</b> <br/>
-              We couldn't find the page you're looking for. Try searching or go back to the <a href={Paths.home}>Home</a>
+              We couldn't find the page you're looking for. Try searching or go back to the <Link to={Paths.home}>Home</Link>
           </p>
       </div>
     </div>

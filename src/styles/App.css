@@ -131,11 +131,11 @@ body{
 *************************************/
 
 .S-header {}
-
+/* 
 .navbar-nav {
   width: 80%;
   justify-content: space-around;
-}
+} */
 
 .S-footer-container {
   /* background: rgb(24, 44, 255); */
@@ -189,10 +189,15 @@ body{
 
 .S-room-chat-box {
   height: 100%;
+  padding-bottom: 12px;
 }
 
 .S-chat-messages {
   height: calc(100% - 32px);
+}
+
+.S-room-video-container {
+  padding-bottom: 20px;
 }
 
 .vertical-center {

@@ -3,6 +3,7 @@ import { inject, observer } from "mobx-react";
 import { OpenVidu } from "openvidu-browser";
 import { withRouter } from "react-router-dom";
 import Input from "antd/lib/input";
+import Button from "antd/lib/button";
 
 import Config from "Config";
 import Video from "./Video.Component";
@@ -81,15 +82,39 @@ class Room extends React.Component {
             </div>
           </div>
           <hr />
-          <div className="col-sm">
-            <button className="btn btn-primary" onClick={this.startStream}>
-              Start My Stream
-            </button>
-          </div>
+          <div className="col-sm">{this.actionBtsn()}</div>
         </div>
       </div>
     );
   }
+
+  actionBtsn = () => {
+    const store = this.props.roomStore;
+    if (store.isConnected) {
+      return (
+        <Button type="danger" size="large" onClick={this.stopStream}>
+          Stop
+        </Button>
+      );
+    } else {
+      return (
+        <Button type="primary" size="large" onClick={this.startStream}>
+          Start
+        </Button>
+      );
+    }
+  };
+
+  stopStream = e => {
+    e.preventDefault();
+    const store = this.props.roomStore;
+    store.isConnected = false;
+
+    if (this.props.roomStore.session) {
+      this.props.roomStore.session.disconnect();
+      this.props.roomStore.removeSessionId();
+    }
+  };
 
   startStream = e => {
     e.preventDefault();
@@ -130,7 +155,7 @@ class Room extends React.Component {
                     Config.ServerUrl
                   }`)
           ) {
-            this.props.location.push(Config.ServerUrl + "/accept-certificate");
+            window.open(Config.ServerUrl + "/accept-certificate", "_blank");
           }
         } else if (res) {
           store.getToken("PUBLISHER").then(result => {
@@ -162,12 +187,10 @@ class Room extends React.Component {
           insertMode: "APPEND", // How the video is inserted in the target element 'video-container'
           mirror: true // Whether to mirror your local video or not
         });
-        store.isConnected = false;
+        store.isConnected = true;
         store.publisher = publisher;
 
         store.session.publish(publisher);
-
-        // this.props.roomStore.mainStreamManager.addVideoElement(this.props.roomStore.videoEl);
       });
   };
 

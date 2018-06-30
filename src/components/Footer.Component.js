@@ -15,7 +15,7 @@ class Footer extends React.Component {
                     <p>All persons depicted herein were at least 18 years of age at the time of photography:</p>
                     <p>18 U.S.C. 2257 Record-Keeping Requirements Compliance Statement</p>
 
-                    <p>© 1996 - 2018 VS3.COM, VS Media, Inc. All Rights Reserved. Privacy Policy, Copyright Policy & Terms & Conditions.</p>
+                    <p>© 1996 - {(new Date()).getFullYear()} VS3.COM, VS Media, Inc. All Rights Reserved. Privacy Policy, Copyright Policy & Terms & Conditions.</p>
 
                 </div>
             </div>

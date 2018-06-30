@@ -21,6 +21,7 @@ class Video extends React.Component {
           className="S-video img-fluid"
           poster={streamLarge}
           ref={ref => (this.videoEl = ref)}
+          controls
         />
       </div>
     );

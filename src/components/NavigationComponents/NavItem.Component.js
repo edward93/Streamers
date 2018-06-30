@@ -62,7 +62,7 @@ class NavItem extends React.Component {
             <li className={this.className()}>
                 <a className="nav-link"
                     href={this.props.path}
-                    onClick={this.go}>
+                    onClick={this.props.onClick ? this.props.onClick : this.go}>
                     {this.props.name}<span className="sr-only">(current)</span>
                 </a>
             </li>
@@ -73,7 +73,8 @@ class NavItem extends React.Component {
 NavItem.propTypes = {
     path: PropTypes.string.isRequired,
     name: PropTypes.string.isRequired,
-    className: PropTypes.string
+    className: PropTypes.string,
+    onClick: PropTypes.func
 }
 
 export default withRouter(NavItem);
