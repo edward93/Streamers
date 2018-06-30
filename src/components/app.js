@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Router, Route, Switch, Redirect } from 'react-router-dom';
+import { Router, Route, Switch, Redirect, Link } from 'react-router-dom';
 import { Provider } from "mobx-react";
 
 import createBrowserHistory from 'history/createBrowserHistory';
@@ -20,6 +20,7 @@ import Paths from '../services/Paths';
 import RoomGrid from './RoomComponents/Room.Grid.Component';
 import RoomStore from '../store/Room.Store';
 import UserSession from '../store/User.Session.Store';
+import not_found from '../images/404.jpg';
 
 import '../styles/App.css';
 
@@ -88,7 +89,13 @@ class App extends Component {
 const NoMatch = () => {
   return (
     <div>
-      <p>Page was not found</p>
+      <div className="not_found">
+          <img src={not_found} alt=""/>
+          <p>
+              <b>Come back, you're wandering too far!</b> <br/>
+              We couldn't find the page you're looking for. Try searching or go back to the <Link to={Paths.home}>Home</Link>
+          </p>
+      </div>
     </div>
   )
 }
