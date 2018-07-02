@@ -271,7 +271,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Brumette
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={annaImg} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
@@ -286,7 +286,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Asian
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={jessicaImg} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
@@ -301,7 +301,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Brumette
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={girls} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
@@ -314,7 +314,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Asian
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={annaImg} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
@@ -327,7 +327,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Brumette
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={girl} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
@@ -340,7 +340,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Asian
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={girls} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
@@ -353,7 +353,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Brumette
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={jessicaImg} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
@@ -366,7 +366,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Asian
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={girls} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
@@ -379,7 +379,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Brumette
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={girl} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
@@ -392,7 +392,7 @@ class Room extends React.Component {
                         <div className="lent in_private">
                             Asian
                         </div>
-                        <a href={Paths.room+'?name=jessica&sessionId=jessica1'}>
+                        <a href='#'>
                             <img src={annaImg} alt="" className="img-fluid" />
                             <p className="count"><span className="available_count">Available<br/>
                         3000 models
