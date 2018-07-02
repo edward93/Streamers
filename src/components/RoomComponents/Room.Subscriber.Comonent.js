@@ -262,9 +262,9 @@ class Room extends React.Component {
                     </div>
             </div>
 
-            <div className="top_destinaton bg">
+            <div className="top_destinaton bg mt-2">
                 <div className="S-room-gird-title S-page-title text-center">
-                    <h1 className="after_line" style={{color:'#fff'}}>Category</h1>
+                    <h1 className="after_line white" style={{color:'#fff'}}>Category</h1>
                 </div>
                 <div className=" destination_img" id="destination_img">
                     <div className="relative">

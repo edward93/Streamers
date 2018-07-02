@@ -11,6 +11,21 @@ body{
   height: 80px;
 }
 
+
+::-webkit-scrollbar{
+  width: 5px;
+  height: 10px;
+  border: 1px solid #ececec;
+}
+
+::-webkit-scrollbar-button{
+  /*background-color: red;*/
+}
+
+::-webkit-scrollbar-thumb{
+  background-color: #18beff;
+}
+
 .App-header {
   background-color: #222;
   height: 150px;
