@@ -1,5 +1,6 @@
 import React from 'react';
 import Paths from "../services/Paths";
+import { Link } from "react-router-dom";
 
 class Footer extends React.Component {
     render() {
@@ -9,7 +10,7 @@ class Footer extends React.Component {
                     <p>Brought to you by VS Media, Inc., Westlake Village, CA, United States</p>
 
                     <p>
-                        <a href={Paths.home}>Home</a>
+                        <Link to={Paths.home}>Home</Link>
                     </p>
 
                     <p>All persons depicted herein were at least 18 years of age at the time of photography:</p>
